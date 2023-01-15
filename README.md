@@ -1,2 +1,2 @@
-# SatTrack
+# sat_track
 Tracking Satellites
