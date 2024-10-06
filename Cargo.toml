@@ -2,12 +2,24 @@
 name = "sat_track"
 version = "0.1.0"
 edition = "2021"
+authors = ["Craig Osborn <craig@craigosborn.dev>"]
+description = "Satellite tracking using SGP4"
+license = "MIT"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+default = ["web", "cli"]
+web = ["serde", "reqwest"]
+cli = ["clap"]
 
 [dependencies]
-anyhow = "1.0.68"
-chrono = "0.4.23"
-clap = {version="4.1.1", features=["derive"]}
-reqwest = {version="0.11.13", features = ["blocking", "json"]}
-sgp4 = "0.8.2"
+anyhow = "1.0.89"
+chrono = "0.4.38"
+clap = { version = "4.5.19", features = ["cargo"], optional = true }
+reqwest = { version = "0.12.8", features = [
+    "blocking",
+    "json",
+], optional = true }
+serde = { version = "1.0.210", optional = true }
+sgp4 = "2.2.0"
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
